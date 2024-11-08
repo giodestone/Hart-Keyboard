@@ -1,5 +1,7 @@
 # Hart Keyboard
 
+![https://raw.githubusercontent.com/giodestone/Hart-Keyboard/refs/heads/dev/Images/Image2.jpg](Hart keyboard on a white background.)
+
 Hart is a 80% ISO layout 3D-Printable, hand-soldered keyboard based on the RP2040 platform (Raspberry Pi Pico 1). It is supposed to be cheap, achievable, and usable.
 
 This is my first keyboard like this, so it contains a lot of newbie things. I suggest using this a reference for your own keyboard, rather than trying to 3D print it (but if you do - please open an issue/pull-request with your build pictures!).
