@@ -78,7 +78,9 @@ After thinking about it some more, the keyboard had to:
 So, that's why it was 3D-printable, uses the RP2040, and has some gimmicks.
 
 ### ℹ Useful Links
-👁: Inspiration, 📖: Guides/documentation, 🎁: parts.
+> 👁: Inspiration |
+> 📖: Guides/documentation |
+> 🎁: Parts
 
 - 👁 General Inspiration: [Gallery](https://imgur.com/gallery/P90jZJq), [Reddit Thread](https://www.reddit.com/r/MechanicalKeyboards/comments/qaxoyn/built_my_own_3dprinted_handwired_keyboard/)
 - 👁 [Sick68 3D Printed Keyboard for Reference](https://www.thingiverse.com/thing:3478494)
