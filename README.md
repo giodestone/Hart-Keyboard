@@ -25,7 +25,7 @@ If you are thinking of building your first Keyboard and are new to CAD, 3D print
 This keyboard should cost £70-100 to make.
 
 * c. 500g of filament (actual requirement is much lower)
-* 90x switches
+* 90x switches - I used lubed Gatreon Brown from Glorius, as 120x is only £35.
 * 90x keycaps, some with Cherry-style or Costar style stabalisers.
     * 1x 6.25u key (stabalised)
     * 1x 2u key (stabalised)
@@ -92,10 +92,11 @@ So, that's why it was 3D-printable, uses the RP2040, and has some gimmicks.
 - 📖 [Keyboard Wiki (terminology, overview of all components etc.)](https://deskthority.net/wiki/)
 - 📖 [Easy DIY Key Legends](https://www.youtube.com/watch?v=bnU0FQforaw)
 - 📖 [QMK Guides for Layer setup](https://thomasbaart.nl/category/mechanical-keyboards/firmware/qmk/)
+- 📖 [Beginners guide to switches](https://www.theremingoat.com/blog/beginners-guide)
 - 🔧 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/#/)
 - 🔧 [Keyboard Layout to STL Generator](https://kbd.news/Keyboard-layout-STL-generator-1259.html)
 - 🔧 [Keyboard Layout to CAD Drawings](http://builder.swillkb.com/)
-    - [Alternative](https://github.com/swill/kad)
+    - [Alternative tool](https://github.com/swill/kad)
 - 🔧 [keebcu - a customizer for 3d printable keyboard cases](https://github.com/andimoto/keebcu)
 - 🔧 🎁 [Keycap Generator](https://www.thingiverse.com/thing:2783650)
     - 🔧 🎁 [Github Link (Heavily reccomended)](https://github.com/rsheldiii/KeyV2)
@@ -144,8 +145,10 @@ You can just buy the keycaps, but make sure you have a compatible spacebar.
 #### Switches
 There are a multitude of switch formats to pick from. Cherry are the most prevelant so I went with them. I would have picked low profile, if they weren't both out of stock and overpriced - unless I wanted the ones with a Choc-style stem, which the keycap generation library did not support (and at the time of writing, still doesn't).
 
+There's a much better article explaining this in the useful links section. All you need to know: switches affect the price, sound, and feel the most!
+
 #### Stabalisers
-Stabalisers are the things that stop the larger keys (space, enter, backspace, right-shift) from wobbling. 
+Stabalisers are the things that stop the larger keys (space, enter, backspace, right-shift) from wobbling and being near unusable. 
 
 I chose Costar-style as I wanted to make the keyboard as 3D printable as possible, and they seemed actually printable on an FDM printer versus the cherry style. Costar, is also reportedley more stable than Cherry, but a bigger nightmare to take apart. 
 
@@ -193,7 +196,7 @@ But seriously - wireless would require more pins, more thought, and a battery. Q
 I spent a not insiginficant amount of time on this.
 
 There are some things you can do, such as:
-* Use silent-ish switches. This probably makes the biggest differece.
+* Use silent-ish switches. This probably makes the biggest differece. Lubed switches should help (also with the 'feel'). These switches will have dampeners in their shell and potentially at the bottom of the stem internally.
 * Change keycap shape. I found this out by printing some other keycaps, and turns out the shape makes a big difference.
 * Use o-rings. If you bottom out keys with force, this can help at the expense of the feel (becomes mushier and reduced key travel distance).
 * Use hollow materials. The infill on the sides of the case/plate is 20%, so it means some sound is 'absorbed'. If it was solid, the sound would spread more evenely.
