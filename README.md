@@ -34,7 +34,7 @@ This keyboard should cost £70-100 to make.
     * 2x 1.5u
     * 2x 1.25u
     * 81x 1u
-* 90x diodes
+* 90x 1N4148 diodes
 * 1x SSD1306 OLED
 * 1x EC11 Rotary Encoder
 * 1x RP2040 (micro USB)
@@ -50,10 +50,11 @@ This keyboard should cost £70-100 to make.
 ## Tools
 * Access to a calibrated, reliable 3D printer.
     * + related tools for 3D print refinement such as a file/sandpaper.
-* 1x flush cutters
-* 1x tuler
-* 2x needlenose pliers for stabaliser wire creation (or 1x needlenose plier, 1x wire straightner/double nylon jaw)
-* 1x soldering iron with your preferred tip (I used a Pinecil - highly reccomend)
+* 1x flush cutters (aka snips)
+* 1x ruler
+* 2x needle-nose pliers for stabaliser wire creation (or 1x needle-nose plier, 1x wire straightener/double nylon jaw)
+* 1x soldering iron with your preferred tip (I used a Pinecil - highly recommend)
+* 1x solder sucker (I used a SS 02 Ali-Express clone - it was 10x better than my previous one and cost only £4)
 * 1x rosin-core lead-free solder spool
 * 1x spool of enamelled wire
 * 1x roll of electrical tape (I used white)
@@ -214,7 +215,7 @@ Things you can allegedaly do (I read about these but didn't try them):
 
 I used [Autodesk Fusion360](https://www.autodesk.com/products/fusion-360/personal) because I was familar with Autodesk Inventor (a similar tool) & it was free for personal use, alongside [OpenSCAD](https://openscad.org/) due to the parametric key library that needed it.
 
-I wish I had used [OnShape](https://www.onshape.com/en/), or maybe even FreeCad as both are free and don't have stupid editable file limiations like Fusion360, can accidentally generate .stl files through the cloud (why?).
+I wish I had used [OnShape](https://www.onshape.com/en/), or maybe even FreeCad as both are free and don't have stupid editable file limitations like Fusion360, can accidentally generate .stl files through the cloud (why?).
 
 ### Process
 This is the rough process. I thought about it a lot before.
@@ -225,7 +226,29 @@ This is the rough process. I thought about it a lot before.
 
 
 ### Sketching out
+First, I sketched out the rough figure and where things may go, like the key placement, OLED, macro keys etc.
 
+During this process, I decided I was happy with the clear PETG look. In retrospect, I would have liked it to be more colourful - either pastel or beige.
+
+### Making the layout
+The layout was made in the 
+
+
+
+## Printing
+The printing process took a long time, mostly because my printer was poorly calibrated and I played around too much.
+
+The printer I used was an Ender 3 Pro (no bed leveling when I made this - V1.1.4/8bit mainboard). Truly a no-frills printer.
+
+### Print Settings
+I used CURA to slice.
+* 0.4mm nozzle
+* PETG (I used eSun Clear PETG - try to use a somewhat reputable brand - turns out it makes a difference)
+    * 230C print, 90C glass bed, with a hairspray coating to aid de/adhesion.
+* 0.16mm 'dynamic' layer height (0.12-0.18mm)
+* 20% gyroid inflill (gives it strength + interesting pattern)
+* brim for bed adhesion, 8mm width, also for inside of the plate
+* 
 
 
 
@@ -242,6 +265,15 @@ For the space key stabaliser wire, I went through 4 different types. Turns out, 
 
 ## Learnings / Reflection
 
+### Parts
+
+#### Casing
+I wish I had split up the casing a little more. I could have avoided the need for supports in the type-c, OLED, and rotary encoder enclosures. This would have resulted in a better finish, despite a greater requirement to assemble. Overall, the plastic wasted for supports was low, but could have been none.
+
+I could have improved the structural integrity and assembly experience by adding grooves for the keyboard halves to assemble, a ledge or similar. Plus it would make the physical strains travel through the plastic, rather than the adhesive improving strength (not that its weak).
+
+The space left on the bottom of the keyboard was just enough after resoldering parts of the keyboard with lower gauge enamlelled copper wire - as opposed to some generic (multi-core) wire I got.
+
 ### RP2040
 
 The RP2040 has two I2C controllers (I2C0 and I2C1), avaliable only on certain pins! Moreover, it appearts the pinout is a lie, and pins 1, 2 (which claim I2C support), did not work for me. This is why the OLED display is on pins 4,5. I didn't try disabling UART, which may have been the issue.
@@ -251,6 +283,11 @@ I think it was a good idea. I didn't have to glue or screw the microcontroller i
 
 Due to my oversight, its missing the resistors required to make it work with a USB C to C cable.
 
+#### OLED Display/SSD1306
+Overall, I think it was the right choice as it was cheap and simple. You can get bi-colour OLED displays, and even colour ones - but you would be far more space microcontroller space concerned if you had to deal with a full-RGB palette (you can definitely cut it down by using a fixed-palette).
+
+#### Volume Knob/EC11
+It was the right choice. The EC11 is natively supported by QMK. I was trying to test it before assembling and I couldn't get an Arduino library to work for some reason.
 
 ### Keys
 
