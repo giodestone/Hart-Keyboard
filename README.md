@@ -35,6 +35,8 @@ This keyboard should cost £70-100 to make.
     * 2x 1.25u
     * 81x 1u
 * 90x 1N4148 diodes
+* 30cm of steel wire
+* 2x paper clips
 * 1x SSD1306 OLED
 * 1x EC11 Rotary Encoder
 * 1x RP2040 (micro USB)
@@ -56,7 +58,7 @@ This keyboard should cost £70-100 to make.
 * 1x soldering iron with your preferred tip (I used a Pinecil - highly recommend)
 * 1x solder sucker (I used a SS 02 Ali-Express clone - it was 10x better than my previous one and cost only £4)
 * 1x rosin-core lead-free solder spool
-* 1x spool of enamelled wire
+* 1x spool of enamelled wire for wiring everything together
 * 1x roll of electrical tape (I used white)
 
 
@@ -125,6 +127,8 @@ I could have tried an ortholinear or differnetly-staggered keyboard (i.e. how e.
 I like flat keyboards. I think the non-ergonomic layout is fine. I wanted my keyboard to be one piece for these reasons - and upon further investigation getting the two sides to connect can be tricky.
 
 The thickness of the keyboard was important. In the case of using Cherry-like switches, the thinner the better. I didn't want it to be much thicker than my current one.
+
+Since, I have used a Microsoft Ergonomic Keyboard 4000 and really like the reduced wrist strain - but also think it can be improved quite a bit especially typing feel and reducing the size footprint.
 
 ### 🎪 Gimmicks (Rotary Encoder, Display)
 
@@ -231,16 +235,19 @@ First, I sketched out the rough figure and where things may go, like the key pla
 During this process, I decided I was happy with the clear PETG look. In retrospect, I would have liked it to be more colourful - either pastel or beige.
 
 ### Making the layout
-The layout was made in the 
+The layout was made using [Keyboard Layout Editor](https://www.keyboard-layout-editor.com/#/). While abandoned and sometimes frustrating to use, it is the easiest to use tool I have found.
+
+The layout is based off a Dell 7559 keyboard, but with a few changes - namely no numpad and a wrap around layout.
 
 
 
 ## Printing
-The printing process took a long time, mostly because my printer was poorly calibrated and I played around too much.
+The printing process took a long time, mostly because my printer was poorly calibrated and I played around too much with the settings trying to find perfect ones.
 
 The printer I used was an Ender 3 Pro (no bed leveling when I made this - V1.1.4/8bit mainboard). Truly a no-frills printer.
 
 ### Print Settings
+A lot of these settings can be improved.
 I used CURA to slice.
 * 0.4mm nozzle
 * PETG (I used eSun Clear PETG - try to use a somewhat reputable brand - turns out it makes a difference)
@@ -248,24 +255,48 @@ I used CURA to slice.
 * 0.16mm 'dynamic' layer height (0.12-0.18mm)
 * 20% gyroid inflill (gives it strength + interesting pattern)
 * brim for bed adhesion, 8mm width, also for inside of the plate
-* 
-
+* 1.2mm walls
 
 
 
 
 ## Assembly
+Overall, the soldering took the longest, followed by getting the stabilisers right.
 
-### Key Stabalisers
-The space, return, and required quite a lot of thought. To make your own, you need to measure the distance between the far ends of the stabalisers once they are in the board, then measure 11mm, and then about 5mm (this distance doesn't matter too much) and bend it in place.
+The two part casing and bottom plate are glued together using superglue. Then, the screw mount holders are superglued to the frame with the nut also superglued. This worked well enough.
 
-For the space key stabaliser wire, I went through 4 different types. Turns out, just get the steel wire as jewlery wire is not strong enough (turns out the plated ones are not steel-core). You can adapt the key insert for the costar to make it work properly.
+### Wiring/Soldering
+I highly recommend using enamelled single core wire (i.e. single strand). The enamel is easy enough to burn off where needed. Do not use multi-core wire like I did.
+
+First, each of the keys had to have a diode soldered to one of the pins.
+
+Next, I suggest using a single wire for each row/column and burning off the bits of the enamel where the keys connect.
+
+Finally (for the keys at least), I soldered the each row/col to the RP2040. Each wire should be thin enough to fit through the holes as it makes it much easier to solder them.
+
+I had to check for shorts between each of the rows/cols using a multimeter and fix them using the white electrical tape.
+
+The USB C board was wired to the micro USB connector via enamelled wire, as was the OLED.
+
+The rotary encoder encoding pins were soldered in to the micro controller, however the switch was soldered into the keyboard matrix, requiring a diode.
+
+For the rows to RP2040, OLED and rotary encoders I left some extra wire to allow for the RP2040 to be lifted out - but not so much to where it would take up unnecessary space.
+
+Lead-free solder was used, which is a little more challenging to work with - but less likely to accidentally contaminate something with lead.
+
+The Pinecil was an excellent soldering iron and had enough heating power @ 45w.
+
+### Key Stabilisers
+The space, return, and backspace keys all required quite a lot of thought, as they required a stabiliser wire. To make your own, you need to measure the distance between the far ends of the stabilisers once they are in the board, then measure 11mm, and then about 5mm (this distance doesn't matter too much) and bend it in place.
+
+For the space key stabiliser wire, I went through 4 different types. Turns out, just get the steel wire as jewellery wire is not strong enough (turns out the plated ones are not steel-core). You can adapt the key insert for the Costar to make it work properly. I heard that orthodontic wire is steel wire and can be bought cheaply.
 
 
 
 ## Learnings / Reflection
 
 ### Parts
+Overall, the externally bought parts were great choices and desired parts were good enough.
 
 #### Casing
 I wish I had split up the casing a little more. I could have avoided the need for supports in the type-c, OLED, and rotary encoder enclosures. This would have resulted in a better finish, despite a greater requirement to assemble. Overall, the plastic wasted for supports was low, but could have been none.
@@ -278,6 +309,8 @@ The space left on the bottom of the keyboard was just enough after resoldering p
 
 The RP2040 has two I2C controllers (I2C0 and I2C1), avaliable only on certain pins! Moreover, it appearts the pinout is a lie, and pins 1, 2 (which claim I2C support), did not work for me. This is why the OLED display is on pins 4,5. I didn't try disabling UART, which may have been the issue.
 
+Apart from this, it was an excellent choice due to native QMK support and ease of flashing new firmware.
+
 #### USB C Breakout Board
 I think it was a good idea. I didn't have to glue or screw the microcontroller in place to fix solder connections. I will likely continue this for future hand-built keyboards.
 
@@ -286,12 +319,17 @@ Due to my oversight, its missing the resistors required to make it work with a U
 #### OLED Display/SSD1306
 Overall, I think it was the right choice as it was cheap and simple. You can get bi-colour OLED displays, and even colour ones - but you would be far more space microcontroller space concerned if you had to deal with a full-RGB palette (you can definitely cut it down by using a fixed-palette).
 
+I want to do more with it!
+
 #### Volume Knob/EC11
 It was the right choice. The EC11 is natively supported by QMK. I was trying to test it before assembling and I couldn't get an Arduino library to work for some reason.
 
 ### Keys
+The key switch choice was very good - they feel very satisfying to type on and smoother than rubber-dome (aka generic keyboard) or scissor (aka laptop).
+
+The keycaps take getting used to. I think I should have made them smaller (their key top size matches the laptop one) - but the bottom tapers out too quickly making it easy to mistype. The keycaps either have to be bevelled or their top be higher than the next key when depressed to avoid the edge of your finger from pressing the next key. Fortunately, it is very easy to reprint keycaps and iteratively design due to low resource use and fast printing times.
 
 #### Stabalisers
 Bending the wires was a pain. Getting the distances more so. Getting the wires flat even more.
 
-I wish I had used one for the caps lock, as it bends more than I would like it to.
+I wish I had used one for the caps lock and right shift, as it flexes more than I would like it to.
