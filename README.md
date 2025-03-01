@@ -145,10 +145,10 @@ The keycaps were flat as they print well, and I like the aestetis and feel of fl
 
 They were generated using the [Key V2 Library](https://github.com/rsheldiii/KeyV2), and tweaked using OpenSCAD. Note you need the nightly version, and you need to look through the issues if you want a fix for a stem generation easy.
 
-You can just buy the keycaps, but make sure you have a compatible spacebar.
+You can just buy the keycaps, but make sure you have a compatible spacebar. Its probably similar material cost wise and much easier.
 
 #### Switches
-There are a multitude of switch formats to pick from. Cherry are the most prevelant so I went with them. I would have picked low profile, if they weren't both out of stock and overpriced - unless I wanted the ones with a Choc-style stem, which the keycap generation library did not support (and at the time of writing, still doesn't).
+There are a multitude of switch formats to pick from. Cherry-style are the most prevelant so I went with them. I would have picked low profile, if they weren't both out of stock and overpriced (well.. unless I wanted the ones with a Choc-style stem, which the keycap generation library did not support - and at the time of writing, still doesn't).
 
 There's a much better article explaining this in the useful links section. All you need to know: switches affect the price, sound, and feel the most!
 
@@ -169,7 +169,7 @@ This means I needed:
 * 2 for the display (SDA/SCL - this is the I2C SSD1306 - which uses less pins than the SPI). 
 * This is exluding 3.3V/5v (5v aka VDD) & GND for the OLED and GND for the rotary encoder (they do not use data)
 * Enough headroom for an OLED display and some images to be stored (8kb per image frame).
-* USB OTG device mode (so the Pi can pretend to be an input device)
+* USB OTG/HID device mode (so the Pi can pretend to be an input device)
 
 <details>
 <summary>Expand for Pico Pinout Image</summary>
@@ -189,19 +189,19 @@ This keyboard is designed with anticipation for a very specific (but hopefully w
 As a consequence, it means that the microcontroller is more protected from being plugged/unplugged and can be accessed easier for soldering/desoldering.
 
 #### Alternatives to the RP2040
-Alternatives I considered include the ATMEGA32A, Makey-makey, Arduino Pro Micro. Especially with the Pro Micro, there is support for some other firmware (though QMK seems the standard) and you can find more documentation. But they were costly by comparison, had less storage, and fewer pins. They all seemed equally easy to program, arguably the RP2040 easiest, as you just drag+drop the compiled firmare onto it. You could use any microcontroller that can pretend to be a USB device.
+Alternatives I considered include the ATMEGA32A, Makey-makey, Arduino Pro Micro. Especially with the Pro Micro, there is support for some other firmware (though QMK seems the standard) and you can find more documentation. But they were costly by comparison, had less storage, and fewer pins. They all seemed equally easy to program, arguably the RP2040 easiest, as you just drag+drop the compiled firmare onto it. You could use any microcontroller that can pretend to be a USB HID device.
 
 #### Why Wired?
 
-This was my first keyboard. I decided that's for the future.
+This was my first keyboard. I decided batteries were for a future project.
 
-But seriously - wireless would require more pins, more thought, and a battery. QMK isn't wireless-native, and there are some exta-low-power modes etc. that would need to be thought about. Plus, the OLED would drain the battery quicker. The Pi Pico W has a Bluetooth radio that can be made to make it a keyboard. Look at other firmware thats wireless first if you want to pursue this (and to pick a supported microcontroller).
+But seriously - wireless would require more pins, more thought, and a battery. QMK isn't wireless-native (KMK is), and there are some exta-low-power modes etc. that would need to be thought about. Plus, the OLED would drain the battery quicker. The Pi Pico W has a Bluetooth radio that can be made to make it a keyboard. Look at other firmware thats wireless first if you want to pursue this (and to pick a supported microcontroller).
 
 ### 🔇 Making things quiet
 I spent a not insiginficant amount of time on this.
 
 There are some things you can do, such as:
-* Use silent-ish switches. This probably makes the biggest differece. Lubed switches should help (also with the 'feel'). These switches will have dampeners in their shell and potentially at the bottom of the stem internally.
+* Use silent-ish switches. This probably makes the biggest differece. Lubed switches should help (also with the 'feel'). Silent switches will have dampeners in their shell and potentially at the bottom of the stem internally.
 * Change keycap shape. I found this out by printing some other keycaps, and turns out the shape makes a big difference.
 * Use o-rings. If you bottom out keys with force, this can help at the expense of the feel (becomes mushier and reduced key travel distance).
 * Use hollow materials. The infill on the sides of the case/plate is 20%, so it means some sound is 'absorbed'. If it was solid, the sound would spread more evenely.
@@ -210,62 +210,95 @@ Things you can allegedaly do (I read about these but didn't try them):
 * Add pillow fluff to the inside.
 * Use rubber feet. This will reduce the vibrations passed to the desk at the expense of size. Plus the keyboard will be much gripper!
 * Add a foam layer between the plate and the case/base. This was almost a thing, but I couldn't find any consistent foam standards or wanted to compormise on the structural integrity.
-    * <sup><sub>Plus I was hoping this keyboard would be somewhat recyclable - mixing materials stops a keyboard from being recyclable. Plus the people sorting would have probably thrown away the keyboard parts in the recycling/sorting centre anyway as they don't look like PETG-recyclable... And is 3D printable PETG even officially recyclabe, with the potential additives?</sub></sup>
+    * <sup><sub>Plus I was hoping this keyboard would be somewhat recyclable - mixing materials stops a keyboard from being recyclable. Plus the people sorting would have probably thrown away the keyboard parts in the recycling/sorting centre anyway as they don't look like PETG-recyclable... And I couldn't find much info about whether the PETG fillament is even recyclabe, given the potential additives?</sub></sup>
 
 
 
 
-## Modelling the Keyboard
+## 👨‍🔬Modelling the Keyboard
 
-I used [Autodesk Fusion360](https://www.autodesk.com/products/fusion-360/personal) because I was familar with Autodesk Inventor (a similar tool) & it was free for personal use, alongside [OpenSCAD](https://openscad.org/) due to the parametric key library that needed it.
+I used [Autodesk Fusion360](https://www.autodesk.com/products/fusion-360/personal) because I was familar with Autodesk Inventor (a similar tool) & it was free for personal use, alongside [OpenSCAD](https://openscad.org/) to use the keycap library, KeyV2
 
-I wish I had used [OnShape](https://www.onshape.com/en/), or maybe even FreeCad as both are free and don't have stupid editable file limitations like Fusion360, can accidentally generate .stl files through the cloud (why?).
-
-### Process
-This is the rough process. I thought about it a lot before.
-
-1. Settle on design. I sketched out a rough idea.
-2. Make layout in this tool.
-3. Put the layout from the above tool into...
+I wish I had used [OnShape](https://www.onshape.com/en/), or maybe even FreeCad (Since 1.0 its a lot better - but rough around the edges) as both are free and don't have stupid editable file limitations like Fusion360 and strange cloud integration in places.
 
 
-### Sketching out
-First, I sketched out the rough figure and where things may go, like the key placement, OLED, macro keys etc.
+### ✏Sketching out
+First, I sketched out some thumbnails to get an idea of the rough shape and size, and where things may go, like the key placement, OLED, macro keys etc.
 
-During this process, I decided I was happy with the clear PETG look. In retrospect, I would have liked it to be more colourful - either pastel or beige.
+During this process, I decided I was happy with the clear PETG look. In retrospect, I would have liked it to be more colourful. I didn't mind seeing the plate either (usually a third layer is added which extends to the bottom of the switches to hide them somewhat).
+
+I also thought about the size at this point by estimating some dimensions. Generally, I thought a 5mm border sufficient. I also knew there had to be extra strength added due to the lack of a dedicated plate.
 
 ### Making the layout
-The layout was made using [Keyboard Layout Editor](https://www.keyboard-layout-editor.com/#/). While abandoned and sometimes frustrating to use, it is the easiest to use tool I have found.
+The layout was made using [Keyboard Layout Editor](https://www.keyboard-layout-editor.com/#/). While no longer actively developed and sometimes frustrating to use, it is the easiest to use tool I have found.
 
-The layout is based off a Dell 7559 keyboard, but with a few changes - namely no numpad and a wrap around layout.
+The layout is based off a Dell laptop keyboard, but with a few changes - namely no numpad and a wrap around layout.
+
+The standard 'staggered' layout is only one of the options. There are various 'staggered' layouts to choose from. A grid layout (aka ortholinear) can be used instead.
+
+### Generating the plate
+The keyboard plate (aka the bit with the switch holes) was generated using [SwillLib Plate Builder](http://builder.swillkb.com/). This was definately the right option as making this CAD sketch manually would have been error prone and taken ages.
+
+### 🪑CAD Modelling
+I took the generated plate CAD drawing, then modified it to make the borders the correct size.
+
+Subsiquently, I got to modelling the parts and creating a digital assembly.
+
+This is where knowledge of CAD modelling practices and being aware of 3D printing limitations were handy. Here are some key ones:
+* Think of the model as parts. Each part should be in a seperate file, later places into a digital assembly.
+* Digital assemblies help avoid unnecessary prints. Especially as CAD models of common parts are avaliable online (e.g. Pi Pico, SSD1306)
+* Dimensions should end in 2,4,6,8 to reflect the nozzle diameter and layer height (e.g. 12.02mm).
+* If something is not a multiple of the layer height (0.12mm in my case) - it may not print correctly.
+* Avoid overhangs or voids where supports will be needed. Removing them is annoying, the finish is rough, and causes unecessary material waste.
+* Sense of scale can be difficult to visualise without being able to hold some components. Print them off, or have them avaiable to look at.
+* Large parts warp, so split them.
+* Certain areas are more prone to iteration, so split accordingly. That way if you decide the side of the keyboard is silly, avoid.
+* Ensure your tolerance takes into account at least 0.5mm. This is both for an error in measurements, variance in parts, and 3D printer calibrations.
+* Rounded edges on the layer axis (up/down) should be avoided, as they will be rough. If they cannot be avoided, a smaller nozzle, or provision for smoothing should be thought of. <sub>Smoothing can be carried out by varnishing, sanding, chemical abraison, or a combination of all three. Ordered  easiest to least approchable.</sub>
+
+I deliberately avoided melt-in threaded inserts as they are (IMO) overpriced. The bolt screw mount was chosen as I figured I may want to tinker with wiring. A [plastic self-tapping screwhole](https://www.youtube.com/watch?v=HgEEtk85rAY) can be used instead, but it will wear out if frequently used.
 
 
 
-## Printing
+## 🖨Printing
 The printing process took a long time, mostly because my printer was poorly calibrated and I played around too much with the settings trying to find perfect ones.
 
 The printer I used was an Ender 3 Pro (no bed leveling when I made this - V1.1.4/8bit mainboard). Truly a no-frills printer.
 
-### Print Settings
+### 💿Print Settings
 A lot of these settings can be improved.
-I used CURA to slice.
+* CURA Slicer
 * 0.4mm nozzle
-* PETG (I used eSun Clear PETG - try to use a somewhat reputable brand - turns out it makes a difference)
+* PETG (I used eSun Clear PETG - I used a no-label fillament for a first protype and it was terrible)
     * 230C print, 90C glass bed, with a hairspray coating to aid de/adhesion.
 * 0.16mm 'dynamic' layer height (0.12-0.18mm)
 * 20% gyroid inflill (gives it strength + interesting pattern)
-* brim for bed adhesion, 8mm width, also for inside of the plate
+* Brim for bed adhesion, 8mm width, also for inside of the plate
 * 1.2mm walls
 
+### ⚗Part Processing (sanding etc.)
+I had to add the brim to the interior of the switch holes to ensure adhesion. Getting rid of them was a nightmare but it helped a lot. I used my snips to do the majority of the work. I could almost peel a lot of it away. I'm sure there's a slicer setting to make them peel easier somewhere.
+
+The keycaps also used brims. I used nail polish to smooth some out, as dirt can get trapped in grooves.
+
+I tried to avoid sanding too much in order to avoid creating too many microplastics.
+
+Getting rid of the supports which filled the void for the type-c connect was a nightmare. Turns out it should have been printed as two seperate pieces. The one layer of plastic that was holding it together almost snapped. the Type-C connect became structural.
 
 
 
-## Assembly
+## 🧰Assembly
 Overall, the soldering took the longest, followed by getting the stabilisers right.
 
-The two part casing and bottom plate are glued together using superglue. Then, the screw mount holders are superglued to the frame with the nut also superglued. This worked well enough.
+The keyboard is effectively two piece. The body is screwed together with the bottom plate.
 
-### Wiring/Soldering
+The body and bottom plate are printed off in two parts, therefore have to be glued together.
+
+The body then requires for screw mounts to be glued in (with hex bolts glued in as well).
+
+The type-c connect has to be glued in as well.
+
+### 〰Wiring/Soldering
 I highly recommend using enamelled single core wire (i.e. single strand). The enamel is easy enough to burn off where needed. Do not use multi-core wire like I did.
 
 First, each of the keys had to have a diode soldered to one of the pins.
@@ -286,14 +319,14 @@ Lead-free solder was used, which is a little more challenging to work with - but
 
 The Pinecil was an excellent soldering iron and had enough heating power @ 45w.
 
-### Key Stabilisers
+### 🚅Key Stabilisers
 The space, return, and backspace keys all required quite a lot of thought, as they required a stabiliser wire. To make your own, you need to measure the distance between the far ends of the stabilisers once they are in the board, then measure 11mm, and then about 5mm (this distance doesn't matter too much) and bend it in place.
 
 For the space key stabiliser wire, I went through 4 different types. Turns out, just get the steel wire as jewellery wire is not strong enough (turns out the plated ones are not steel-core). You can adapt the key insert for the Costar to make it work properly. I heard that orthodontic wire is steel wire and can be bought cheaply.
 
 
 
-## Learnings / Reflection
+## 🎓Learnings / Reflection
 
 ### Parts
 Overall, the externally bought parts were great choices and desired parts were good enough.
@@ -301,9 +334,11 @@ Overall, the externally bought parts were great choices and desired parts were g
 #### Casing
 I wish I had split up the casing a little more. I could have avoided the need for supports in the type-c, OLED, and rotary encoder enclosures. This would have resulted in a better finish, despite a greater requirement to assemble. Overall, the plastic wasted for supports was low, but could have been none.
 
-I could have improved the structural integrity and assembly experience by adding grooves for the keyboard halves to assemble, a ledge or similar. Plus it would make the physical strains travel through the plastic, rather than the adhesive improving strength (not that its weak).
+I could have improved the structural integrity and assembly experience by adding indents/grooves to the body and bottom plate. This would have improved the strength by making the print rely on mechanical contact, rather than adhesive strength. Not that the keyboard is fragile!
 
 The space left on the bottom of the keyboard was just enough after resoldering parts of the keyboard with lower gauge enamlelled copper wire - as opposed to some generic (multi-core) wire I got.
+
+I wished I had placed the screw mounts in the corners, as they make some wires difficult to inspect. I thought it would require increasing the size of the case too much. I was wrong.
 
 ### RP2040
 
