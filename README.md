@@ -21,10 +21,10 @@ If you are thinking of building your first Keyboard and are new to CAD, 3D print
 * QMK-based
 * Cherry-compatible switch design
 
-## Bill of Materials (BoM)
+## 🛒Bill of Materials (BoM)
 This keyboard should cost £70-100 to make.
 
-* c. 500g of filament (actual requirement is much lower)
+* About 500g of filament (actual requirement is much lower)
 * 90x switches - I used lubed Gatreon Brown from Glorius, as 120x is only £35.
 * 90x keycaps, some with Cherry-style or Costar style stabalisers.
     * 1x 6.25u key (stabalised)
@@ -49,7 +49,7 @@ This keyboard should cost £70-100 to make.
     * 7x M3 muts
     * 7x M3x8 bolts or screws
 
-## Tools
+## 🔨Tools
 * Access to a calibrated, reliable 3D printer.
     * + related tools for 3D print refinement such as a file/sandpaper.
 * 1x flush cutters (aka snips)
@@ -62,7 +62,7 @@ This keyboard should cost £70-100 to make.
 * 1x roll of electrical tape (I used white)
 
 
-## Design Choices
+## 💭Design Choices
 First, I had to establish some goals, these ended up being:
 
 1. Usable
@@ -73,8 +73,8 @@ After thinking about it some more, the keyboard had to:
 * have a familar/standard-ish layout.
 * be compatibile with a computer running Windows.
 * be quiet enough.
-* be novel enough so I remain interested in finish it.
-* use achievable techniques with the tools I have.
+* be novel enough so I remain interested as to finish it.
+* be achievable with the tools and knowledge I have.
 * use generally avaliable parts.
 * use cheap parts.
 
