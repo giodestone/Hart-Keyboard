@@ -48,12 +48,12 @@ This keyboard should cost £70-100 to make.
 * 2x 2u Costar stabaliser wires (or 2x paperclips and necessary tools to manipulate them)
 * 1x 6.25u Costar stabaliser wire (or gauge 20 steel wire + necessary tools)
 * for the back (subject to change)
-    * 7x M3 muts
+    * 7x M3 nuts
     * 7x M3x8 bolts or screws
 
 ## 🔨Tools
 * Access to a calibrated, reliable 3D printer.
-    * + related tools for 3D print refinement such as a file/sandpaper.
+    * and related tools for 3D print refinement such as a file/sandpaper.
 * 1x flush cutters (aka snips)
 * 1x ruler
 * 2x needle-nose pliers for stabaliser wire creation (or 1x needle-nose plier, 1x wire straightener/double nylon jaw)
