@@ -219,7 +219,7 @@ Things you can allegedaly do (I read about these but didn't try them):
 
 I used [Autodesk Fusion360](https://www.autodesk.com/products/fusion-360/personal) because I was familar with Autodesk Inventor (a similar tool) & it was free for personal use, alongside [OpenSCAD](https://openscad.org/) to use the keycap library, KeyV2
 
-I wish I had used [OnShape](https://www.onshape.com/en/), or maybe even FreeCad (Since 1.0 its a lot better - but rough around the edges) as both are free and don't have stupid editable file limitations like Fusion360 and strange cloud integration in places.
+I wish I had used [OnShape](https://www.onshape.com/en/), or maybe even FreeCad (much better since the 1.0 release) as both are free and don't have stupid editable file limitations like Fusion360 and strange cloud integration in places.
 
 
 ### ✏Sketching out
