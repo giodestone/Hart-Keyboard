@@ -256,7 +256,7 @@ This is where knowledge of CAD modelling practices and being aware of 3D printin
 * Ensure your tolerance takes into account at least 0.5mm. This is both for an error in measurements, variance in parts, and 3D printer calibrations.
 * Rounded edges on the layer axis (up/down) should be avoided, as they will be rough. If they cannot be avoided, a smaller nozzle, or provision for smoothing should be thought of. <sub>Smoothing can be carried out by varnishing, sanding, chemical abraison, or a combination of all three. Ordered  easiest to least approchable.</sub>
 
-I deliberately avoided melt-in threaded inserts as they are (IMO) overpriced. The bolt screw mount was chosen as I figured I may want to tinker with wiring. A [plastic self-tapping screwhole](https://www.youtube.com/watch?v=HgEEtk85rAY) can be used instead, but it will wear out if frequently used.
+I deliberately avoided melt-in threaded inserts as they are (IMO) overpriced. The bolt screw mount was chosen as I figured I may want to tinker with wiring. A [plastic self-tapping screwhole](https://www.youtube.com/watch?v=HgEEtk85rAY) can be incorporated into the design instead, but will wear out if frequently used.
 
 
 
