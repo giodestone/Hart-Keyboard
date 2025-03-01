@@ -323,7 +323,21 @@ The space, return, and backspace keys all required quite a lot of thought, as th
 
 For the space key stabiliser wire, I went through 4 different types. Turns out, just get the steel wire as jewellery wire is not strong enough (turns out the plated ones are not steel-core). You can adapt the key insert for the Costar to make it work properly. I heard that orthodontic wire is steel wire and can be bought cheaply.
 
+### Uploading QMK / Luna
+I chose [QMK](https://qmk.fm/) as Luna (the keyboard pet) was supported by it. I am also familar with C and C++. [ZMK](https://zmk.dev/) or [KMK](https://github.com/KMKfw/kmk_firmware) are Python based, and can used instead.
 
+First, I needed to setup the QMK development envrionment. QMK provides an MSYS installer for this. Then, you need to fork your own repo of QMK and create the mappings etc. in a config file. Finally, the firmware can be built and uploaded by dragging the file onto the RP2040.
+
+[My firmware fork](https://github.com/giodestone/qmk_firmware/tree/master/keyboards/giodestone/hart) contains the code for my firmware.
+
+The biggest challenges were figuring out how I wired it together, and making Luna work for the OLED display.
+
+The easiest method is to copy over a similar keyboard and start messing with it until it works AND [follow one of these guides](https://thomasbaart.nl/category/mechanical-keyboards/firmware/qmk/) (especially or getting USB VIDs).
+
+#### Luna
+Luna was designed for a 32x128 display. I have a 128x64 display. I had to rewrite the rendering code to make it work correcly as otherwise Luna was in four segments. This involved a lot of trial end error and putting up with the rather strange way sprites are stored and rendered. I did break the jumping function however. I also had an issue where I thought my code caused memory corruption, but it turns out I had some dodgy soldering and potentially incorrect sizes.
+
+There is also some code for 'honk' a keyboard pet I was working on... I may finish it some day in the future.
 
 ## 🎓Learnings / Reflection
 
