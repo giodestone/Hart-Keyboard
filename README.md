@@ -10,7 +10,7 @@ I suggest using this a reference for making your own keyboard, rather than tryin
 
 If you are thinking of building your first Keyboard and are new to CAD, 3D printing, and microcontrollers - build a numpad first. Or you can buy kits off websites where you solder it yourself but still pick the parts.
 
-*For easier navigation, use the table of contents on the top left of the README frame.*
+*For easier navigation, use the table of contents on the top right of the README frame.*
 ![Table of Contents button](https://raw.githubusercontent.com/giodestone/Hart-Keyboard/refs/heads/main/Images/TOC.jpg)
 
 ## Features
