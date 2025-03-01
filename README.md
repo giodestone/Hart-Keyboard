@@ -173,11 +173,8 @@ This means I needed:
 * Enough headroom for an OLED display and some images to be stored (8kb per image frame).
 * USB OTG/HID device mode (so the Pi can pretend to be an input device)
 
-<details>
-<summary>Expand for Pico Pinout Image</summary>
-![Pico Pinout Image](https://www.raspberrypi.com/documentation/microcontrollers/images/pico-pinout.svg)
-</details>
-[Pico Pinout Website](https://pico.pinout.xyz/)
+Pico Pinout Image: https://www.raspberrypi.com/documentation/microcontrollers/images/pico-pinout.svg
+Pico Pinout Website: https://pico.pinout.xyz/
 
 The Pi Pico has 25 usable GPIO pins (26 if you count the one used for the built-in LED). This means it has enough for the matrix and rotary encoder (which uses GPIO pins). It has 2 I2C controllers (IC20 and IC21), making it suitable for the I2C based SSD1306 display. The RP2040 I got was the reference one. It had 16MB of 'storage' and 264KB of RAM (there are the variants that have as much as 64MB of 'storage') - enough for storing plenty of imaes. Two community-based keyboard firmwares support the RP2040: QMK (C-based) and KMK (Python-based). The RP2040 can also 'pretend' to be a USB keyboard. Finally, the price was good - about £4. Therefore, the RP2040 was chosen.
 
