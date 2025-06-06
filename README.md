@@ -8,6 +8,8 @@ This is my first DIY keyboard, so it is a bit rough around the edges.
 
 I suggest using this a reference for making your own keyboard, rather than trying to 3D print it (but if you do - please open an issue/pull-request with your build pictures!).
 
+![File download can be found on the releases page](https://github.com/giodestone/Hart-Keyboard/releases).
+
 If you are thinking of building your first Keyboard and are new to CAD, 3D printing, and microcontrollers - build a numpad first. Or you can buy kits off websites where you solder it yourself but still pick the parts.
 
 *For easier navigation, use the table of contents on the top right of the README frame.*
@@ -19,7 +21,7 @@ If you are thinking of building your first Keyboard and are new to CAD, 3D print
 * 128x64 SSD1306 OLED Display
 * [Luna Keyboard Pet](https://www.youtube.com/watch?v=HgIQRazCAjo)
 * 3 'extra' buttons (currently as F13-F15)
-* Tenkeyless/80%-ish layout (full f-row)
+* Tenkeyless/80%-ish layout (full f-row, with home keys (pg up etc.), but no numpad)
 * ISO Layout (menu key-less)
 * Compact
 * Relatively thin
@@ -196,22 +198,22 @@ Alternatives I considered include the ATMEGA32A, Makey-makey, Arduino Pro Micro.
 
 This was my first keyboard. I decided batteries were for a future project.
 
-But seriously - wireless would require more pins, more thought, and a battery. QMK isn't wireless-native (KMK is), and there are some extra-low-power modes etc. that would need to be thought about. Plus, the OLED would drain the battery quicker. The Pi Pico W has a Bluetooth radio that can be made to make it a keyboard. Look at other firmware thats wireless first if you want to pursue this (and to pick a supported microcontroller).
+Wireless would require more pins, much more thought (charge controller, where will the extra components go), and a battery. The firmware used, QMK, isn't wireless-native (however an alternative KMK is), and there are some extra-low-power modes etc. that would need to be thought about to get good battery life. Plus, the OLED would drain the battery quicker. With a change of micro controller to the Pi Pico W (which has a Bluetooth radio), it would be possible. If you want to make one that is wireless, I suggest looking at other DIY wireless keyboards, and using firmware (such as KMK) thats is wireless first.
 
 ### 🔇 Making things quiet
 I spent a while researching this.
 
 There are some things you can do, such as:
-* Use silent-ish switches. This probably makes the biggest difference. Lubed switches should help (also with the 'feel'). Silent switches will have dampeners in their shell and potentially at the bottom of the stem internally.
+* Use silent-ish switches. This probably makes the biggest difference. Lubed switches should help (also with the 'feel'). Silent switches will have dampeners in their shell and potentially at the bottom of the stem internally. Reds and blue's will be louder.
 * Change keycap shape. I found this out by printing some other keycaps, and turns out the shape makes a big difference.
-* Use o-rings. If you bottom out keys with force, this can help at the expense of the feel (becomes mushier and reduced key travel distance).
+* Use o-rings. If you bottom out keys with force, this can help at the expense of the feel (becomes mushier and reduces key travel distance).
 * Use hollow materials. The infill on the sides of the case/plate is 20%, so it means some sound is 'absorbed'. If it was solid, the sound would spread more evenly.
 
 Things you can allegedly do (I read about these but didn't try them):
-* Add pillow fluff to the inside.
+* Add pillow fluff to the inside to reduce noise.
 * Use rubber feet. This will reduce the vibrations passed to the desk at the expense of size. Plus the keyboard will be much gripper!
-* Add a foam layer between the plate and the case/base. This was almost a thing, but I couldn't find any consistent foam standards or wanted to compromise on the structural integrity.
-    * <sup><sub>Plus I was hoping this keyboard would be somewhat recyclable - mixing materials stops a keyboard from being recyclable. Plus the people sorting would have probably thrown away the keyboard parts in the recycling/sorting centre anyway as they don't look like PETG-recyclable... And I couldn't find much info about whether the PETG fillament is even recyclable, given the potential additives?</sub></sup>
+* Add a foam layer between the plate and the case/base. I almost did this, but I couldn't find any consistent foam standards (i.e. what foam to pick) or found good ways to integrate it within the parameters of the project.
+    * <sup><sub>Plus I was hoping this keyboard would be somewhat recyclable - mixing materials stops a keyboard from being recyclable. Plus the people sorting waste would have probably thrown away the keyboard parts in the recycling/sorting centre anyway as they don't look like PET-recyclable... And I couldn't find much info about whether the PETG fillament is even recyclable, given the potential additives...</sub></sup>
 
 
 
@@ -226,19 +228,19 @@ I wish I had used [OnShape](https://www.onshape.com/en/), or maybe even [FreeCad
 ### ✏Sketching out
 First, I sketched out some thumbnails to get an idea of the rough shape and size, and where things may go, like the key placement, OLED, macro keys etc.
 
-During this process, I decided I was happy with the clear PETG look. In retrospect, I would have liked it to be more colourful. I didn't mind seeing the plate either (usually a third layer is added which extends to the bottom of the switches to hide them somewhat).
+During this process, I decided I was happy with the clear PETG look. In retrospect, I would have liked it to be more colourful. I didn't mind seeing the plate either (usually a third layer is added which to hide the switches somewhat).
 
 I also thought about the size at this point by estimating some dimensions. Generally, I thought a 5mm border sufficient. I also knew there had to be extra strength added due to the lack of a dedicated plate.
 
 ### Making the layout
 The layout was made using [Keyboard Layout Editor](https://www.keyboard-layout-editor.com/#/). While no longer actively developed and sometimes frustrating to use, it is the easiest to use tool I have found.
 
-The layout is based off a Dell laptop keyboard, but with a few changes - namely no numpad and a wrap around layout.
+The layout is based off a Dell laptop keyboard, but with a few changes - namely no numpad and some keys were placed to the right of the keyboard.
 
-The standard 'staggered' layout is only one of the options. There are various 'staggered' layouts to choose from. A grid layout (aka ortholinear) can be used instead.
+From my research, the standard 'staggered' layout is only one of the options. There are various 'staggered' layouts to choose from. A grid layout (aka ortholinear) could have been used instead.
 
 ### Generating the plate
-The keyboard plate (aka the bit with the switch holes) was generated using [SwillLib Plate Builder](http://builder.swillkb.com/). This was definitely the right option as making this CAD sketch manually would have been error prone and taken ages.
+The keyboard plate (aka the bit with the switches go) was generated using [SwillLib Plate Builder](http://builder.swillkb.com/). This was definitely the right option as making this CAD sketch manually would have been error prone and taken ages.
 
 ### 🪑CAD Modelling
 I took the generated plate CAD drawing, then modified it to make the borders the correct size.
